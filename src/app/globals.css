@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  /* The room before the lights come on: the wall fades in over this. */
+  --color-background: #141414;
+  --color-foreground: #111111;
+  --color-ink: #0c0c0b;
+  --color-caption: #1f1f1d;
+  --color-caption-muted: #7d7d78;
+  --font-sans: var(--font-inter-tight), Arial, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  /* Light comes from the upper left, so the frame's shadow falls to the lower right.
+     Lengths are in cqw so the shadow scales with the frame, whose wrapper is a size container. */
+  --shadow-frame:
+    0.15cqw 0.3cqw 0.3cqw rgb(0 0 0 / 0.3), 0.6cqw 1.2cqw 1.5cqw rgb(0 0 0 / 0.24),
+    1.5cqw 3.25cqw 5cqw rgb(0 0 0 / 0.22), 3.25cqw 7.1cqw 11.8cqw rgb(0 0 0 / 0.2);
+}
+
+/* Soft pool of light on the upper left of the wall plus a vignette towards the corners. */
+@utility wall-light {
+  background-image:
+    radial-gradient(120% 90% at 30% 18%, rgb(255 255 255 / 0.14), transparent 60%),
+    radial-gradient(140% 120% at 50% 45%, transparent 50%, rgb(0 0 0 / 0.32));
+}
+
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
